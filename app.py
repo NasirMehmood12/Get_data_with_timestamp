@@ -77,7 +77,7 @@ def get_facebook_links():
     try:
         conn = psycopg2.connect(DATABASE_URL)
         cursor = conn.cursor()
-        cursor.execute("SELECT page_name, link FROM facebook_links")
+        cursor.execute("SELECT page_name, link,timestamp FROM facebook_links")
         data = cursor.fetchall()
         cursor.close()
         conn.close()
