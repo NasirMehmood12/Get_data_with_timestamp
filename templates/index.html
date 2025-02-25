@@ -62,8 +62,8 @@
         <label for="facebookFilter">Facebook:</label>
         <select id="facebookFilter">
             <option value="">All</option>
-            {% for page_name, link in facebook_links %}
-            <option value="{{ page_name }}">{{ page_name }}</option>
+            {% for  link in facebook_links %}
+            <option value="{{ link.page_name }}">{{ link.page_name }}</option>
             {% endfor %}
         </select>
     </div>
@@ -99,11 +99,13 @@
                 <tr>
                     <th>Page Name</th>
                     <th>Link</th>
+                    <th>time posted</th>
                 </tr>
                 {% for page_name, link in facebook_links %}
-                <tr data-page="{{ page_name }}">
-                    <td>{{ page_name }}</td>
-                    <td><a href="{{ link }}" target="_blank">{{ link }}</a></td>
+                <tr data-page="{{ link.page_name }}">
+                    <td>{{ link.page_name }}</td>
+                    <td><a href="{{ link.link }}" target="_blank">{{ link.link }}</a></td>
+                    <td>{{ link.timestamp }}</td>
                 </tr>
                 {% endfor %}
             </table>
