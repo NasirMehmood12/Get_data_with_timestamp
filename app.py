@@ -122,14 +122,14 @@ def index():
         return redirect(url_for("login"))  
 
     instagram_links = get_instagram_links()
-    facebook_links = get_facebook_links()
+    fb_links = get_fb_links()
 
     instagram_pages = list(set([link["page_name"] for link in instagram_links]))  
     facebook_pages = list(set([link["page_name"] for link in fb_links]))
    
     return render_template("index.html", 
                            instagram_links=instagram_links, 
-                           facebook_links=facebook_links, 
+                           fb_links=fb_links, 
                            instagram_pages=instagram_pages, 
                            facebook_pages=facebook_pages)
 
