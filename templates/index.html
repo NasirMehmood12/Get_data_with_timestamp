@@ -59,13 +59,13 @@
             {% endfor %}
         </select>
 
-<!--         <label for="facebookFilter">Facebook:</label>
+        <label for="facebookFilter">Facebook:</label>
         <select id="facebookFilter">
             <option value="">All</option>
             {% for  link in fb_links %}
-            <option value="{{ link.id }}">{{ link.id }}</option>
+            <option value="{{ link.page_name }}">{{ link.page_name }}</option>
             {% endfor %}
-        </select> -->
+        </select>
     </div>
 
     <div class="container">
@@ -97,13 +97,13 @@
             <h3>Facebook Links</h3>
             <table id="facebookTable">
                 <tr>
-                    <th>id</th>
+                    <th>page_name</th>
                     <th>Link</th>
                     <th>time posted</th>
                 </tr>
                 {% for link in fb_links %}
-                <tr data-page="{{ link.id }}">
-                    <td>{{ link.id }}</td>
+                <tr data-page="{{ link.page_name }}">
+                    <td>{{ link.page_name }}</td>
                     <td><a href="{{ link.link }}" target="_blank">{{ link.link }}</a></td>
                     <td>{{ link.timestamp }}</td>
                 </tr>
