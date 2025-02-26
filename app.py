@@ -78,7 +78,7 @@ def get_fb_links():
 
         # Convert tuples into dictionaries using list comprehension
         results = [
-            {"link": row[0], "page_name": row[2], "timestamp": row[1].strftime('%Y-%m-%d %H:%M:%S') if row[1] else None}
+            {"link": row[0], "page_name": row[2], "timestamp": row[1] if row[1] else None}
             for row in data
         ]
 
