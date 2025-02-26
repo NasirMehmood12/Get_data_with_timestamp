@@ -122,7 +122,7 @@ def index():
     facebook_links = get_facebook_links()
 
     instagram_pages = list(set([link["page_name"] for link in instagram_links]))  
-    facebook_pages = list(set([link[0] for link in facebook_links]))
+    facebook_pages = list(set([link["id"] for link in facebook_links]))
    
     return render_template("index.html", 
                            instagram_links=instagram_links, 
