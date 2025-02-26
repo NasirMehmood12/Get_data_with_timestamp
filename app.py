@@ -68,43 +68,46 @@ def get_instagram_links():
         return []
 
 
-def get_facebook_links():
-    """Fetch Facebook links from the database."""
+def get_fb_links():
+    """Fetch Instagram links from the database, including timestamps."""
     try:
         conn = psycopg2.connect(DATABASE_URL)
         cursor = conn.cursor()
-        cursor.execute("SELECT * FROM fb_links")
+        cursor.execute('SELECT page_name, link, timestamp FROM fb_links')
         data = cursor.fetchall()
+
+        # Convert tuples into dictionaries using list comprehension
+        results = [
+            {"page_name": row[0], "link": row[1], "timestamp": row[2].strftime('%Y-%m-%d %H:%M:%S') if row[2] else None}
+            for row in data
+        ]
+
         cursor.close()
         conn.close()
-        return data
+        return results  # ✅ Returning a list of dictionaries
     except Exception as e:
-        print(f"Error fetching Facebook links: {e}")
+        print(f"Error fetching Instagram links: {e}")
         return []
 
 
-
-
 # def get_facebook_links():
-#     """Fetch Instagram links from the database, including timestamps."""
+#     """Fetch Facebook links from the database."""
 #     try:
 #         conn = psycopg2.connect(DATABASE_URL)
 #         cursor = conn.cursor()
-#         cursor.execute('SELECT id, link, timestamp FROM fb_links')
+#         cursor.execute("SELECT * FROM fb_links")
 #         data = cursor.fetchall()
-
-#         # Convert tuples into dictionaries using list comprehension
-#         results = [
-#             {"id": row[0], "link": row[1], "timestamp": row[2] if row[2] else None}
-#             for row in data
-#         ]
-
 #         cursor.close()
 #         conn.close()
-#         return results  # ✅ Returning a list of dictionaries
+#         return data
 #     except Exception as e:
-#         print(f"Error fetching Instagram links: {e}")
+#         print(f"Error fetching Facebook links: {e}")
 #         return []
+
+
+
+
+
 
 
 
