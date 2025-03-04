@@ -73,7 +73,7 @@ def get_fb_links():
     try:
         conn = psycopg2.connect(DATABASE_URL)
         cursor = conn.cursor()
-        cursor.execute('SELECT link, timestamp,page_name FROM fb_links')
+        cursor.execute('SELECT link, timestamp,page_name FROM fb_links ORDER BY timestamp DESC')
         data = cursor.fetchall()
 
         # Convert tuples into dictionaries using list comprehension
